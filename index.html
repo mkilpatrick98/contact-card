@@ -2,146 +2,578 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <meta
+    name="description"
+    content="Michael Kilpatrick — irrigation, turf, industrial distribution, and home-lab enthusiast in Austin, Texas."
+  >
+
+  <meta name="theme-color" content="#0f172a">
 
   <title>Michael Kilpatrick</title>
 
   <style>
+    :root {
+      --background: #07111f;
+      --card: rgba(15, 23, 42, 0.88);
+      --card-light: rgba(30, 41, 59, 0.78);
+      --text: #f8fafc;
+      --muted: #cbd5e1;
+      --blue: #2563eb;
+      --blue-light: #60a5fa;
+      --green: #16a34a;
+      --border: rgba(148, 163, 184, 0.22);
+      --shadow: 0 24px 70px rgba(0, 0, 0, 0.4);
+    }
+
     * {
       box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
     }
 
     body {
       margin: 0;
       min-height: 100vh;
-      padding: 24px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background: #0f172a;
-      color: #ffffff;
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+      padding: 24px 16px 40px;
+      color: var(--text);
+      font-family:
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        Roboto,
+        Arial,
+        sans-serif;
+
+      background:
+        radial-gradient(
+          circle at top left,
+          rgba(37, 99, 235, 0.35),
+          transparent 36%
+        ),
+        radial-gradient(
+          circle at bottom right,
+          rgba(22, 163, 74, 0.25),
+          transparent 35%
+        ),
+        linear-gradient(
+          145deg,
+          #020617,
+          #0f172a 48%,
+          #052e2b
+        );
+    }
+
+    a {
+      color: inherit;
+    }
+
+    .page {
+      width: 100%;
+      max-width: 540px;
+      margin: 0 auto;
     }
 
     .card {
-      width: 100%;
-      max-width: 430px;
-      padding: 34px 24px;
-      background: #1e293b;
-      border: 1px solid #334155;
-      border-radius: 24px;
-      text-align: center;
-      box-shadow: 0 18px 50px rgba(0, 0, 0, 0.35);
+      overflow: hidden;
+      border: 1px solid var(--border);
+      border-radius: 28px;
+      background: var(--card);
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
     }
 
-    .initials {
-      width: 92px;
-      height: 92px;
-      margin: 0 auto 20px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+    .banner {
+      position: relative;
+      height: 170px;
+      background:
+        linear-gradient(
+          rgba(4, 47, 46, 0.15),
+          rgba(2, 6, 23, 0.7)
+        ),
+        linear-gradient(
+          120deg,
+          #0f766e,
+          #2563eb 55%,
+          #16a34a
+        );
+    }
+
+    .banner::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+
+      background-image:
+        linear-gradient(
+          rgba(255, 255, 255, 0.06) 1px,
+          transparent 1px
+        ),
+        linear-gradient(
+          90deg,
+          rgba(255, 255, 255, 0.06) 1px,
+          transparent 1px
+        );
+
+      background-size: 30px 30px;
+      mask-image:
+        linear-gradient(
+          to bottom,
+          black,
+          transparent
+        );
+    }
+
+    .profile-wrap {
+      position: relative;
+      z-index: 2;
+      width: 124px;
+      height: 124px;
+      margin: -68px auto 14px;
+      padding: 5px;
       border-radius: 50%;
-      background: #2563eb;
-      font-size: 32px;
-      font-weight: 700;
+      background: linear-gradient(
+        135deg,
+        var(--blue-light),
+        #34d399
+      );
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.38);
+    }
+
+    .profile-photo {
+      width: 100%;
+      height: 100%;
+      display: block;
+      object-fit: cover;
+      object-position: center;
+      border: 4px solid #0f172a;
+      border-radius: 50%;
+      background: #1e293b;
+    }
+
+    .content {
+      padding: 0 22px 26px;
+      text-align: center;
     }
 
     h1 {
-      margin: 0 0 8px;
-      font-size: 30px;
+      margin: 0;
+      font-size: clamp(29px, 8vw, 37px);
+      line-height: 1.1;
+      letter-spacing: -0.04em;
+    }
+
+    .headline {
+      margin: 10px auto 0;
+      color: #bfdbfe;
+      font-size: 15px;
+      font-weight: 650;
+      line-height: 1.5;
     }
 
     .location {
-      margin: 0 0 18px;
-      color: #cbd5e1;
-    }
-
-    .description {
-      margin: 0 auto 18px;
-      max-width: 340px;
-      color: #e2e8f0;
-      line-height: 1.55;
+      margin: 8px 0 0;
+      color: var(--muted);
+      font-size: 14px;
     }
 
     .motto {
-      margin: 20px 0 26px;
-      color: #93c5fd;
+      margin: 18px 0 22px;
+      color: #86efac;
+      font-size: 15px;
       font-style: italic;
-      font-weight: 600;
-    }
-
-    .buttons {
-      display: grid;
-      gap: 12px;
-    }
-
-    .button {
-      display: block;
-      padding: 15px 18px;
-      border-radius: 12px;
-      background: #2563eb;
-      color: white;
-      text-decoration: none;
       font-weight: 650;
     }
 
-    .secondary {
-      background: #475569;
-    }
-
-    .contact-button {
-      background: #16a34a;
-    }
-
-    .button:active {
-      transform: scale(0.98);
-    }
-
-    .note {
-      margin: 24px 0 0;
-      color: #94a3b8;
+    .status {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 22px;
+      padding: 8px 12px;
+      border: 1px solid rgba(74, 222, 128, 0.25);
+      border-radius: 999px;
+      background: rgba(22, 163, 74, 0.12);
+      color: #bbf7d0;
       font-size: 13px;
+      font-weight: 650;
+    }
+
+    .status-dot {
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+      background: #4ade80;
+      box-shadow: 0 0 12px #4ade80;
+    }
+
+    .quick-actions {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      margin-bottom: 12px;
+    }
+
+    .quick-button,
+    .main-button {
+      text-decoration: none;
+      transition:
+        transform 0.15s ease,
+        filter 0.15s ease;
+    }
+
+    .quick-button {
+      padding: 14px 8px;
+      border: 1px solid var(--border);
+      border-radius: 15px;
+      background: var(--card-light);
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .quick-button span {
+      display: block;
+      margin-bottom: 6px;
+      font-size: 22px;
+    }
+
+    .main-buttons {
+      display: grid;
+      gap: 11px;
+    }
+
+    .main-button {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 9px;
+      min-height: 52px;
+      padding: 13px 17px;
+      border-radius: 15px;
+      background: var(--blue);
+      font-weight: 750;
+    }
+
+    .main-button.green {
+      background: var(--green);
+    }
+
+    .main-button.secondary {
+      border: 1px solid var(--border);
+      background: #334155;
+    }
+
+    .quick-button:active,
+    .main-button:active {
+      transform: scale(0.98);
+      filter: brightness(0.92);
+    }
+
+    .section {
+      margin-top: 18px;
+      padding: 21px;
+      border: 1px solid var(--border);
+      border-radius: 22px;
+      background: rgba(15, 23, 42, 0.78);
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.22);
+    }
+
+    .section h2 {
+      margin: 0 0 15px;
+      font-size: 20px;
+      letter-spacing: -0.02em;
+    }
+
+    .section-intro {
+      margin: -7px 0 16px;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.55;
+    }
+
+    .services {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      text-align: left;
+    }
+
+    .service {
+      min-height: 92px;
+      padding: 14px;
+      border: 1px solid var(--border);
+      border-radius: 15px;
+      background: rgba(30, 41, 59, 0.72);
+    }
+
+    .service-icon {
+      display: block;
+      margin-bottom: 8px;
+      font-size: 23px;
+    }
+
+    .service strong {
+      display: block;
+      margin-bottom: 4px;
+      font-size: 14px;
+    }
+
+    .service small {
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.4;
+    }
+
+    .about-list {
+      display: grid;
+      gap: 10px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      text-align: left;
+    }
+
+    .about-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      color: var(--muted);
+      line-height: 1.5;
+    }
+
+    .about-list strong {
+      color: var(--text);
+    }
+
+    footer {
+      padding: 25px 12px 4px;
+      color: #94a3b8;
+      text-align: center;
+      font-size: 12px;
+      line-height: 1.6;
+    }
+
+    footer a {
+      color: #bfdbfe;
+      text-decoration: none;
+    }
+
+    @media (max-width: 390px) {
+      .quick-actions {
+        grid-template-columns: 1fr;
+      }
+
+      .quick-button span {
+        display: inline;
+        margin-right: 7px;
+      }
+
+      .services {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (prefers-color-scheme: light) {
+      body {
+        background:
+          radial-gradient(
+            circle at top left,
+            rgba(37, 99, 235, 0.2),
+            transparent 40%
+          ),
+          radial-gradient(
+            circle at bottom right,
+            rgba(22, 163, 74, 0.15),
+            transparent 40%
+          ),
+          #e2e8f0;
+      }
     }
   </style>
 </head>
 
 <body>
-  <main class="card">
-    <div class="initials">MK</div>
+  <div class="page">
 
-    <h1>Michael Kilpatrick</h1>
+    <main class="card">
+      <div class="banner"></div>
 
-    <p class="location">Austin, Texas</p>
+      <div class="profile-wrap">
+        <img
+          class="profile-photo"
+          src="profile.jpg"
+          alt="Michael Kilpatrick"
+        >
+      </div>
 
-    <p class="description">
-      Irrigation • Turf • Industrial Distribution
-      
-    </p>
+      <div class="content">
+        <h1>Michael Kilpatrick</h1>
 
-    <p class="motto">Always learning. Always building.</p>
+        <p class="headline">
+          Irrigation Specialist • Turf Specialist<br>
+          B.S. Industrial Distribution
+        </p>
 
-    <div class="buttons">
-      <a class="button" href="tel:+15126570139">
-        Call Michael
-      </a>
+        <p class="location">
+          📍 Austin, Texas
+        </p>
 
-      <a class="button secondary" href="sms:+15126570139">
-        Send a Text
-      </a>
+        <p class="motto">
+          Always learning. Always building.
+        </p>
 
-      <a class="button secondary" href="mailto:mkilpatrick98@gmail.com">
-        Send an Email
-      </a>
+        <div class="status">
+          <span class="status-dot"></span>
+          Available to connect
+        </div>
 
-      <a class="button contact-button" href="michael-kilpatrick.vcf">
-        Add to Contacts
-      </a>
-    </div>
+        <div class="quick-actions">
+          <a
+            class="quick-button"
+            href="tel:+15126570139"
+          >
+            <span>📞</span>
+            Call
+          </a>
 
-    <p class="note">
-      Tap a button to connect.
-    </p>
-  </main>
+          <a
+            class="quick-button"
+            href="sms:+15126570139"
+          >
+            <span>💬</span>
+            Text
+          </a>
+
+          <a
+            class="quick-button"
+            href="mailto:mkilpatrick98@gmail.com"
+          >
+            <span>✉️</span>
+            Email
+          </a>
+        </div>
+
+        <div class="main-buttons">
+          <a
+            class="main-button green"
+            href="michael-kilpatrick.vcf"
+          >
+            📇 Save to Contacts
+          </a>
+
+          <a
+            class="main-button"
+            href="mailto:mkilpatrick98@gmail.com?subject=Service%20Request&body=Hi%20Michael%2C%0A%0AMy%20name%20is%3A%0AMy%20location%20is%3A%0AThe%20issue%20I%20need%20help%20with%20is%3A%0A%0AThanks!"
+          >
+            📝 Request Service
+          </a>
+
+          <a
+            class="main-button secondary"
+            href="https://github.com/mkilpatrick98"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            💻 View GitHub
+          </a>
+        </div>
+      </div>
+    </main>
+
+    <section class="section">
+      <h2>How I Can Help</h2>
+
+      <p class="section-intro">
+        Practical support for irrigation, turf, troubleshooting,
+        and outdoor-system needs.
+      </p>
+
+      <div class="services">
+        <div class="service">
+          <span class="service-icon">📡</span>
+          <strong>Valve Locating</strong>
+          <small>
+            Locating buried irrigation valves and tracing field wiring.
+          </small>
+        </div>
+
+        <div class="service">
+          <span class="service-icon">🔧</span>
+          <strong>Diagnostics</strong>
+          <small>
+            Helping identify controller, solenoid, wiring, and zone issues.
+          </small>
+        </div>
+
+        <div class="service">
+          <span class="service-icon">💧</span>
+          <strong>Irrigation Support</strong>
+          <small>
+            Troubleshooting sprinkler-system performance and operation.
+          </small>
+        </div>
+
+        <div class="service">
+          <span class="service-icon">🌱</span>
+          <strong>Turf Support</strong>
+          <small>
+            Product knowledge and practical lawn-care guidance.
+          </small>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>About Michael</h2>
+
+      <ul class="about-list">
+        <li>
+          <span>🎓</span>
+          <div>
+            <strong>B.S. Industrial Distribution</strong><br>
+            Technical, operational, and customer-focused background.
+          </div>
+        </li>
+
+        <li>
+          <span>💦</span>
+          <div>
+            <strong>Irrigation and turf experience</strong><br>
+            Familiar with controllers, valves, wiring, field diagnostics,
+            and landscape products.
+          </div>
+        </li>
+
+        <li>
+          <span>🖥️</span>
+          <div>
+            <strong>Home-lab enthusiast</strong><br>
+            Interested in networking, self-hosting, electronics,
+            and building practical systems.
+          </div>
+        </li>
+      </ul>
+    </section>
+
+    <footer>
+      Built by Michael Kilpatrick and hosted free with
+      <a
+        href="https://pages.github.com/"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        GitHub Pages
+      </a>.
+    </footer>
+
+  </div>
 </body>
 </html>
